@@ -50,7 +50,8 @@ Containers communicate with each other within a pod using localhost and whatever
 
 In contrast to K8s, the smallest deployable unit for docker are containers. 
 
-## Execution
+
+## Commands
 
 To interact with the cluster from our local machine, *kubectl* is needed. 
 
@@ -58,14 +59,7 @@ To interact with the cluster from our local machine, *kubectl* is needed.
 kubectl is also used to connect your cluster, whether it's running in production or any environment.
 
 
-![Average and STD Prices](momentum_strategy.png)
-
-
-![Average and STD Prices](momentum_strategy.png)
-
-## Commands
-
-```terminal
+```bash
 # Start a cluster with two nodes
 minikube start --nodes=2
 
