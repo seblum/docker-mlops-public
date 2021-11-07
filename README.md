@@ -21,7 +21,12 @@ More specifically:
 * K8s performs zero downtime deployments
 * Rollbacks, etc ...
 
-## Components
+
+## Minikube
+
+describe minikube
+
+## Resources within Kubernetes
 
 Let's first have a look at its components.
 
@@ -34,6 +39,12 @@ A cluster is a set of nodes. A node can be a virtual (VM) or a physical machine,
 It is important to distinguish between nodes within a K8s cluster. In particular between *master nodes* and *worker nodes*.
 
 The **master node** can be seen as the brain of the cluster. This is where all of the decisions are made. Within the master node, there multiple components that make up the *control plane*, e.g. scheduler, cluster store, API server, cloud controller manager, controller manager.
+
+* scheduler
+* cluster store
+* API server
+* cloud controller manager
+* controller manager
 
 The **worker nodes** are responsible for the "heavy lifting" of running an application. 
 
@@ -50,6 +61,11 @@ Containers communicate with each other within a pod using localhost and whatever
 
 In contrast to K8s, the smallest deployable unit for docker are containers. 
 
+#### Deployments
+
+#### ReplicaSets
+
+#### DeamonSets
 
 ## Commands
 
@@ -66,8 +82,13 @@ minikube start --nodes=2
 # check status of minikube nodes
 minikube status
 
+# access the running application using the appname
+minikube service myapp
+
 # show docker containers created within nodes
 docker ps
+
+docker run --rm -p 80:80 amigoscode/kubernetes:customer-v1
 
 # to interact with the cluster use kubectl
 # to show available nodes 
@@ -83,8 +104,24 @@ kubectl apply -f deployment.yml
 # to show the cluster-ips and ports
 kubectl get svc
 
-# access the running application using the appname
-minikube service myapp
+kubectl describe pod <name>
+kubectl describe node minikube-m02
+
+kubectl api-resources
+
+kubectl port-forward deployment/customer 8080:8080 
+
+kubectl exec -it hello-world -- ls /
+kubectl exec -it hello-world -c hello-world -- bash
+
+kubectl logs hello-world
+kubectl logs hello-world -c hello-world
+
+kubectl delete pod hello-world
+
+cat pod.yml | kubectl apply -f -
+
+kubectl run hello-world --image=amigoscode/kubernetes:hello-world --port=80
 ```
 
 ## Exemplary deployment
