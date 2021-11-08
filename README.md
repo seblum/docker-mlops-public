@@ -67,6 +67,32 @@ In contrast to K8s, the smallest deployable unit for docker are containers.
 
 #### DeamonSets
 
+#### Services
+
+Lets let pods talk to each other
+
+customer microservices performs a REST api call to order microservice to fetch some order information
+
+bad way:
+get ip of order
+go to customer deployment
+insert spec env: name order-service
+after deleting the pods, the ip address will change. Thus our hardcoded way does not work anymore. never rely on ip adress and uses Services instead (ClusterIpServces).
+
+using service:
+containerPort of pod and targetPort have to match, and selector-app and pod-app
+clusterip service get endpoints
+access only service ip - what if the service pod is restarting?
+still need portforward to test because we did not implement external ip service yet
+can also use minikube service customer-node to open directly 
+
+
+* ClusterIP (Default): Default Kubernetes Service Type. Only used for internal access and no external. When letting customer talk to order, we use a order service of type clusterIP calling service-name:port. kubernetes clusterIP is created on default to be able to talk to the kube-apiserver-minikube
+* NodePort: Allows to open a port on all nodes. Port range between 30000-32767. Example of two nodes: Nodeport opens one port to both nodes so the client can choose which node to access under one port. The NodePort Service handles this request and checks which pod is healthy and only send requests there. Client wants to run on node one, but pod is only running on node 2 -> Nodeport will send request to pod on node two. Disadvantage is that we can only have one service per port: changes usage of ingress (? what example). If node IP change, then we have a problem
+* ExternalName
+* LoadBalancer: Standard way of exposing applications to the internet. Creates a load balancer per service (a second service needs a second LB). AWS & GCP create a network load balancer (NLB). NLB distributes traffic between instances. minikube tunnel to run locally. Cloud controller manager talks to underlying cloud provider (which it creates an NLB).
+
+
 ## Commands
 
 To interact with the cluster from our local machine, *kubectl* is needed. 
@@ -122,6 +148,24 @@ kubectl delete pod hello-world
 cat pod.yml | kubectl apply -f -
 
 kubectl run hello-world --image=amigoscode/kubernetes:hello-world --port=80
+
+kubectl get endpoints
+
+kubectl describe service order
+
+minikube ip
+minikube ip -n minikube-m02
+
+# open up the url to the service
+minikube service customer-node
+
+kubectl exec -it order-7d87cb7758-664rl -- sh
+
+# watch for changes
+kubectl get svc -w
+
+# access LoadBalancer on minikube
+minikube tunnel
 ```
 
 ## Exemplary deployment
