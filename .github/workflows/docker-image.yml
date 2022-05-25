@@ -26,6 +26,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./Docker/
+          file: ./Docker
           push: true
           tags: seblum/k8straining:latest
