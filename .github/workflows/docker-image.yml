@@ -30,4 +30,4 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         repository: seblum/k8straining
-        tags: latest, $(date +%s)
+        tags: latest
