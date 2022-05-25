@@ -7,27 +7,24 @@ on:
     branches: [ master ]
 
 jobs:
-
-  build:
-
+  docker:
     runs-on: ubuntu-latest
-
     steps:
-  #  - uses: actions/checkout@v3
-   # - name: Build the Docker image
-    #  run: docker build ./Docker/ --file Docker/Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/k8straining:v1:$(date +%s)
-
-    - name: Login to DockerHub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-    
-    #- name: Push to Docker Hub
-    #  run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/k8straining:v1:$(date +%s)
-
-    - name: Push to Docker Hub
-      uses: docker/build-push-action@v2
-      with:
-        repository: seblum/k8straining
-        tags: latest
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: seblum/k8straining:latest
