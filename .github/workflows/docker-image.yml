@@ -31,5 +31,5 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-        repository: ${{ secrets.DOCKERHUB_USERNAME }}/k8straining
+        repository: seblum/k8straining
         tags: latest, $(date +%s)
