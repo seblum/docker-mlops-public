@@ -32,4 +32,4 @@ jobs:
           file: ./Docker/Dockerfile
           push: true
           tags: seblum/k8straining:flask-latest
-          #context: ./Docker/**
+          context: .
