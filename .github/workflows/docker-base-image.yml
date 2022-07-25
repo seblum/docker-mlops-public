@@ -31,7 +31,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          file: ./$DIRECTORY/Dockerfile
+          file: ./$env.DIRECTORY/Dockerfile
           push: true
           tags: seblum/k8straining:flask-latest
           #context: .
