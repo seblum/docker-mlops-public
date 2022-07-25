@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
   push:
     branches: master
-    paths: Docker/**
+    paths: Base/**
   pull_request:
     branches: [ master ]
   workflow_dispatch: # Put here!!
@@ -29,7 +29,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          file: ./Docker/Dockerfile
+          file: ./Base/Dockerfile
           push: true
           tags: seblum/k8straining:flask-latest
           #context: .
