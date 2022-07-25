@@ -33,5 +33,5 @@ jobs:
         with:
           file: ./${{ env.DIRECTORY }}/Dockerfile
           push: true
-          tags: seblum/k8straining:flask-latest
+          tags: seblum/k8straining:base
           #context: .
