@@ -2,7 +2,7 @@
 
 FROM python:3.8-slim-buster
 
-ARG directory=./Base
+ARG directory=./base
 
 COPY $directory/requirements.txt /app/requirements.txt
 
