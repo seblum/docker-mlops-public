@@ -1,7 +1,7 @@
 name: Docker Base Image CI
 
 env:
-  DIRECTORY: Base
+  DIRECTORY: base
 
 on:
   push:
@@ -33,5 +33,5 @@ jobs:
         with:
           file: ./${{ env.DIRECTORY }}/Dockerfile
           push: true
-          tags: seblum/k8straining:base
+          tags: seblum/k8straining:${{ env.DIRECTORY }}
           #context: .
