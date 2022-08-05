@@ -1,13 +1,18 @@
 import streamlit as st
 import requests
 import pandas as pd
+import os 
 
 def main():
+
+    PORT = os.environ.get("PORT")
+    DB_SERVICE = os.environ.get("DB_SERVICE")
+
     st.title("Data from Backend")
 
-    #IP = "0.0.0.0"
-    IP = "flask_base"
-    r = requests.get(f"http://{IP}:5000/data")
+    #DB_SERVICE = "flask_base"
+    #PORT = "5000"
+    r = requests.get(f"http://{DB_SERVICE}:{PORT}/data")
     data = r.json()
     st.json(data)
 
