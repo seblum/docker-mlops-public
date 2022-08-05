@@ -1,4 +1,4 @@
-name: Docker frontend:flask CI
+name: Docker CI frontend:flask
 
 env:
   DIRECTORY: frontend_flask

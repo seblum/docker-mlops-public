@@ -1,4 +1,4 @@
-name: Docker frontend:streamlit CI
+name: Docker CI frontend:streamlit
 
 env:
   DIRECTORY: frontend_streamlit
