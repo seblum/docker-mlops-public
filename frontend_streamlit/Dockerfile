@@ -10,7 +10,7 @@ WORKDIR /app
 RUN pip3 install -r requirements.txt
 COPY $directory /app
 
-EXPOSE 8501
+#EXPOSE 8501
 
 ENTRYPOINT ["streamlit", "run"]
 
