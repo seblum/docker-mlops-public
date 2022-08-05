@@ -2,7 +2,7 @@ name: Docker base CI
 
 env:
   DIRECTORY: base
-  DOCKERREPO: seblum/k8straining
+  DOCKERREPO: seblum/mlops-public
 
 on:
   push:

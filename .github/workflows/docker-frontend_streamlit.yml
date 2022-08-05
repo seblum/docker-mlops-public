@@ -2,7 +2,7 @@ name: Docker frontend:streamlit CI
 
 env:
   DIRECTORY: frontend_streamlit
-  DOCKERREPO: seblum/k8straining
+  DOCKERREPO: seblum/mlops-public
 
 on:
   push:

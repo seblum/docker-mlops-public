@@ -2,7 +2,7 @@ name: Docker frontend:flask CI
 
 env:
   DIRECTORY: frontend_flask
-  DOCKERREPO: seblum/k8straining
+  DOCKERREPO: seblum/mlops-public
 
 on:
   push:
