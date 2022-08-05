@@ -2,7 +2,7 @@
 
 FROM python:3.8-slim-buster
 
-ARG directory=./database
+ARG directory=./backend_flask
 
 COPY $directory/requirements.txt /app/requirements.txt
 
