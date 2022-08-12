@@ -1,7 +1,7 @@
-name: Docker CI frontend_streamlit
+name: Docker CI frontend-flask
 
 env:
-  DIRECTORY: frontend_streamlit
+  DIRECTORY: frontend-flask
   DOCKERREPO: seblum/mlops-public
 
 on:

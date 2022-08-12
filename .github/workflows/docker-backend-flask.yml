@@ -1,7 +1,7 @@
-name: Docker CI backend_flask
+name: Docker CI backend-flask
 
 env:
-  DIRECTORY: backend_flask
+  DIRECTORY: backend-flask
   DOCKERREPO: seblum/mlops-public
 
 on:
