@@ -1,4 +1,4 @@
-name: Docker CI base
+name: Docker CI cat-v2
 
 env:
   DIRECTORY: cat-v2
