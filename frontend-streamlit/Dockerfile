@@ -2,7 +2,7 @@
 
 FROM python:3.8-slim-buster
 
-ARG directory=./frontend_streamlit
+ARG directory=./frontend-streamlit
 
 COPY $directory/requirements.txt /app/requirements.txt
 
