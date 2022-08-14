@@ -1,6 +1,7 @@
 from crypt import methods
 import os
 from flask import Flask, render_template
+from time import sleep
 #from flask_restful import Api, Resource
 
 app = Flask(__name__)
@@ -29,6 +30,16 @@ def index():
 @app.route('/data', methods = ["POST","GET"])
 def data():
     return _get_data()
+
+@app.route('/liveness')
+def healthx():
+    sleep(2)
+    return "<h1><center>Liveness check completed</center><h1>"
+
+@app.route('/readiness')
+def healthz():
+    sleep(20)
+    return "<h1><center>Readiness check completed</center><h1>"
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port='5000')
