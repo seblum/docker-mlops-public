@@ -65,8 +65,8 @@ def _thread_kill_in_seconds(KILL_IN_SECONDS: int):
 
 
 if __name__ == "__main__":
-    KILL_IN_SECONDS = int(os.environ.get("KILL_IN_SECONDS"))
-
+    KILL_IN_SECONDS = os.environ.get("KILL_IN_SECONDS")
+    KILL_IN_SECONDS = int(KILL_IN_SECONDS)
     t1 = threading.Thread(target=_thread_kill_in_seconds, args=(KILL_IN_SECONDS,))
     t1.start()
 
