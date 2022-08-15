@@ -44,7 +44,7 @@ def liveness():
 
 @app.route("/readiness")
 def readiness():
-    # sleep(20)
+    sleep(20)
     return "<h1><center>Readiness check completed</center><h1>"
 
 
