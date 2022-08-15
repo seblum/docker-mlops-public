@@ -44,30 +44,29 @@ def liveness():
 
 @app.route("/readiness")
 def readiness():
-    sleep(20)
     return "<h1><center>Readiness check completed</center><h1>"
 
 
 def _thread_kill_in_seconds(KILL_IN_SECONDS: int):
-    if KILL_IN_SECONDS is not None:
-        print("kill active")
-        for i in range(KILL_IN_SECONDS):
-            sleep(1)
-            if i % 5 == 0:
-                print(f"shutdown in {KILL_IN_SECONDS-i}")
-            if i == KILL_IN_SECONDS - 3:
-                print(f"shutdown in 3")
-            if i == KILL_IN_SECONDS - 2:
-                print(f"shutdown in 2")
-            if i == KILL_IN_SECONDS - 1:
-                print(f"shutdown in 1")
-        os._exit(0)
+    print("kill active")
+    for i in range(KILL_IN_SECONDS):
+        sleep(1)
+        if i % 5 == 0:
+            print(f"shutdown in {KILL_IN_SECONDS-i}")
+        if i == KILL_IN_SECONDS - 3:
+            print(f"shutdown in 3")
+        if i == KILL_IN_SECONDS - 2:
+            print(f"shutdown in 2")
+        if i == KILL_IN_SECONDS - 1:
+            print(f"shutdown in 1")
+    os._exit(0)
 
 
 if __name__ == "__main__":
     KILL_IN_SECONDS = os.environ.get("KILL_IN_SECONDS")
-    KILL_IN_SECONDS = int(KILL_IN_SECONDS)
-    t1 = threading.Thread(target=_thread_kill_in_seconds, args=(KILL_IN_SECONDS,))
-    t1.start()
+    if KILL_IN_SECONDS is not None:
+        KILL_IN_SECONDS = int(KILL_IN_SECONDS)
+        t1 = threading.Thread(target=_thread_kill_in_seconds, args=(KILL_IN_SECONDS,))
+        t1.start()
 
     app.run(debug=True, host="0.0.0.0", port="5000")
