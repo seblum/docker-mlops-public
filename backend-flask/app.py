@@ -38,13 +38,13 @@ def data():
     return _get_data()
 
 @app.route('/liveness')
-def healthx():
-    sleep(2)
+def liveness():
+    #sleep(2)
     return "<h1><center>Liveness check completed</center><h1>"
 
 @app.route('/readiness')
-def healthz():
-    sleep(20)
+def readiness():
+    #sleep(20)
     return "<h1><center>Readiness check completed</center><h1>"
 
 if __name__ == "__main__":
