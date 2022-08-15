@@ -38,12 +38,12 @@ def data():
 
 @app.route("/liveness")
 def liveness():
-    # sleep(2)
     return "<h1><center>Liveness check completed</center><h1>"
 
 
 @app.route("/readiness")
 def readiness():
+    sleep(2)
     return "<h1><center>Readiness check completed</center><h1>"
 
 
