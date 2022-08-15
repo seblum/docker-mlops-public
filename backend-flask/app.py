@@ -11,7 +11,8 @@ app = Flask(__name__)
 KILL_IN_SECONDS = os.environ.get("KILL_IN_SECONDS")
 
 if KILL_IN_SECONDS is not None:
-    sleep(KILL_IN_SECONDS)
+    print("in loop")
+    sleep(int(KILL_IN_SECONDS))
     sys.exit()
 # class Data(Resource):
 #     def get(self):
