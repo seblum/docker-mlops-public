@@ -14,5 +14,5 @@ COPY $directory /app
 
 EXPOSE 5000
 
-CMD [ "python3", "-u", "app.py"] 
+CMD [ "python3", "-u", "app.py"]
 # ""-m" , "flask", "run", "--host=0.0.0.0"]

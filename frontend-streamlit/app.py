@@ -1,9 +1,11 @@
-from time import sleep
-import streamlit as st
-import requests
-import pandas as pd
-import os 
+import os
 import sys
+from time import sleep
+
+import pandas as pd
+import requests
+import streamlit as st
+
 
 def main():
 
@@ -16,15 +18,15 @@ def main():
         # st.text(f"KILL_IN_SECONDS: {KILL_IN_SECONDS}")
 
     st.title("Frontend Deployment")
-    #DB_SERVICE = "flask_base"
-    #PORT = "5000"
+    # DB_SERVICE = "flask_base"
+    # PORT = "5000"
     if DB_SERVICE is not None:
         r = requests.get(f"http://{DB_SERVICE}/data")
         data = r.json()
         st.subheader("Data from Backend")
         st.json(data)
 
-        df = pd.DataFrame.from_dict(data, orient='index')
+        df = pd.DataFrame.from_dict(data, orient="index")
         st.table(df)
 
     # if KILL_IN_SECONDS is not None:
@@ -43,6 +45,7 @@ def main():
     #     sleep(1)
     #     # streamlit catches sys.exit()
     #     os._exit(1)
+
 
 if __name__ == "__main__":
     main()
