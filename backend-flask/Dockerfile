@@ -4,6 +4,8 @@ FROM python:3.8-slim-buster
 
 ARG directory=./backend-flask
 
+ENV PYTHONUNBUFFERED=0
+
 COPY $directory/requirements.txt /app/requirements.txt
 
 WORKDIR /app
