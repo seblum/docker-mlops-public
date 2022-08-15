@@ -3,10 +3,16 @@ import os
 from flask import Flask, render_template
 from time import sleep
 #from flask_restful import Api, Resource
+import sys
 
 app = Flask(__name__)
 #api = Api (app)
 
+KILL_IN_SECONDS = os.environ.get("KILL_IN_SECONDS")
+
+if KILL_IN_SECONDS is not None:
+    sleep(KILL_IN_SECONDS)
+    sys.exit()
 # class Data(Resource):
 #     def get(self):
 #         return _get_data
