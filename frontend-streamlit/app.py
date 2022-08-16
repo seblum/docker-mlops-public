@@ -21,10 +21,11 @@ def main():
     # DB_SERVICE = "flask_base"
     # PORT = "5000"
     if DB_SERVICE is not None:
+        st.subheader("Data from Backend")
+
         r = requests.get(f"http://{DB_SERVICE}/data")
         data = r.json()
-        st.subheader("Data from Backend")
-        st.json(data)
+        #st.json(data)
 
         df = pd.DataFrame.from_dict(data, orient="index")
         st.table(df)
