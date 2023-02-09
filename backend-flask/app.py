@@ -10,6 +10,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 # api = Api (app)
+# api.add_resource(Data, "/data")
 
 
 def _get_data() -> dict:
@@ -28,9 +29,6 @@ def index():
     return render_template("index.html")
 
 
-# api.add_resource(Data, "/data")
-
-# methods not necessarily needed
 @app.route("/data", methods=["POST", "GET"])
 def data():
     return _get_data()
