@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y \
     mariadb-client-${MARIADB_CLIENT_VERSION} && \
     rm -rf /var/lib/apt/lists/*
 
-ARG directory=./mlflow
-COPY $directory/requirements.txt ./requirements.txt
+ARG DIRECTORY=./mlflow
+COPY $DIRECTORY/requirements.txt ./requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 ENV MLFLOW_HOST=0.0.0.0
