@@ -4,3 +4,4 @@ mysqlclient
 numpy==1.22.*
 protobuf==3.20.*
 sqlalchemy < 1.4.0
+#sqlalchemy==1.4.*
