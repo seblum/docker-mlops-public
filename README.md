@@ -1,6 +1,6 @@
 # Docker images
 
-[![Docker Backend Flask CI](https://github.com/seblum/dockerhub-public/actions/workflows/docker-backend-flask.yml/badge.svg)](https://github.com/seblum/dockerhub-public/actions/workflows/docker-backend-flask.yml) \\
+[![Docker Backend Flask CI](https://github.com/seblum/dockerhub-public/actions/workflows/docker-backend-flask.yml/badge.svg)](https://github.com/seblum/dockerhub-public/actions/workflows/docker-backend-flask.yml)
 [![Docker Base CI](https://github.com/seblum/dockerhub-public/actions/workflows/docker-base.yml/badge.svg)](https://github.com/seblum/dockerhub-public/actions/workflows/docker-base.yml)
 [![Docker cat-v1 CI](https://github.com/seblum/dockerhub-public/actions/workflows/docker-cat-v1.yml/badge.svg)](https://github.com/seblum/dockerhub-public/actions/workflows/docker-cat-v1.yml)
 [![Docker cat-v2 CI](https://github.com/seblum/dockerhub-public/actions/workflows/docker-cat-v2.yml/badge.svg)](https://github.com/seblum/dockerhub-public/actions/workflows/docker-cat-v2.yml)
