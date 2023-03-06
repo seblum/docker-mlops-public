@@ -2,10 +2,10 @@ import os
 
 from flask import Flask, render_template
 
-app = Flask(__name__)
 
+application = Flask(__name__)
 
-@app.route("/")
+@application.route("/")
 def home():
     return render_template("index.html")
 
@@ -15,4 +15,4 @@ def home():
 #     return 'I am good, how about you?'
 
 if __name__ == "__main__":
-    app.run(debug=False, host="0.0.0.0", port="5000")
+    application.run(debug=False, host="0.0.0.0", port="5000")
