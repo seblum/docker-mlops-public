@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: generate name
-        - uses: boonya/gh-action-name-generator@v1
+        uses: boonya/gh-action-name-generator@v1
         id: generator
         with:
           separator: "-"
