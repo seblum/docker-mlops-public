@@ -37,15 +37,15 @@ jobs:
     needs: pytest
     runs-on: ubuntu-latest
     steps:
-      - name: generate name
-        uses: boonya/gh-action-name-generator@v1
-        id: generator
-        with:
-          separator: "-"
-          length: 2
-          style: "lowerCase"
-      - name: test generator output
-        run: echo "Generated name is ${{ steps.generator.outputs.name }}."
+      # - name: generate name
+      #   uses: boonya/gh-action-name-generator@v1
+      #   id: generator
+      #   with:
+      #     separator: "-"
+      #     length: 2
+      #     style: "lowerCase"
+      # - name: test generator output
+      #   run: echo "Generated name is ${{ steps.generator.outputs.name }}."
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -60,6 +60,7 @@ jobs:
         with:
           file: ./${{ env.DIRECTORY }}/Dockerfile
           push: true
-          tags: ${{ env.DOCKERREPO }}:${{ steps.generator.outputs.name }}
-          #${{ env.DIRECTORY }}
+          tags: ${{ env.DOCKERREPO }}:${{ env.DIRECTORY }}
+          #${{ steps.generator.outputs.name }}
+          #
           #context: .
