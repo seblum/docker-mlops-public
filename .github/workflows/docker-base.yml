@@ -37,6 +37,15 @@ jobs:
     needs: pytest
     runs-on: ubuntu-latest
     steps:
+      - name: generate name
+        uses: TGPSKI/name-generator-node-action@v2
+        id: generator
+        with:
+          separator: '_'
+          length: '4'
+          style: 'upperCase'
+      - name: test generator output
+        run: echo "latest,${{ steps.generator.outputs.name }}"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -51,5 +60,6 @@ jobs:
         with:
           file: ./${{ env.DIRECTORY }}/Dockerfile
           push: true
-          tags: ${{ env.DOCKERREPO }}:${{ env.DIRECTORY }}
+          tags: ${{ env.DOCKERREPO }}:${{ steps.generator.outputs.name }}
+          #${{ env.DIRECTORY }}
           #context: .
