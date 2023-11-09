@@ -43,6 +43,7 @@ jobs:
         with:
           separator: "-"
           length: 2
+          style: "lowerCase"
       - name: test generator output
         run: echo "Generated name is ${{ steps.generator.outputs.name }}."
       - name: Set up QEMU
