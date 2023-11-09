@@ -38,12 +38,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: generate name
-        uses: actions/generate-release-name-action@e76147da8e5c81eaf017dede5645551d4b94427b
+        - uses: boonya/gh-action-name-generator@v1
         id: generator
         with:
+          separator: "-"
           length: 2
       - name: test generator output
-        run: echo "latest,${{ steps.generator.outputs.release-name }}"
+        run: echo "Generated name is ${{ steps.generator.outputs.name }}."
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
